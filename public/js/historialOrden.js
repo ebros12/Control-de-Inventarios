@@ -69,7 +69,7 @@ function BuscarHistorial() {
                     },
                     {
                         data: 'Importe',
-                        title: 'Importe',
+                        title: 'Observaciones',
                     },
                     {
                         data: 'Precio',
