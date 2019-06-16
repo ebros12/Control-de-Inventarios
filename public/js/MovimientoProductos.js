@@ -304,7 +304,7 @@ function ProductosBodega() {
 
 
             $.each(json.CountBodega, function(i, item) {
-                if (bodegaSelect == item.bodega) {
+                if (bodegaSelect == item.bodega && item.cantidad > 0) {
                     $(".noRep").remove()
                     $(".form").append('<div class="productosBodegas row paso1">' +
                         '<div class="col-md-4">' +
@@ -607,6 +607,7 @@ function AgregarBitacora2(Motivo) {
         FechaCreacion: moment().format("DD/MM/YYYY H:mm:ss"),
         Productos: JSON.stringify(TotalProductos),
         Comentarios: $(".MovimientoSeleccionado option:selected").text() + " - " + $(".Motivo").val() + "=-=" + Motivo,
+        TipoMovimiento: $(".MovimientoSeleccionado option:selected").text()
     }
     $.ajax({
         data: data,
