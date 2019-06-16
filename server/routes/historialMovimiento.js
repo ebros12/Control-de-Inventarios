@@ -90,7 +90,8 @@ app.post('/historialMovimiento', verificaToken, (req, res) => {
             RutEmpresa: body.RutEmpresa,
             TelEmpresa: body.TelEmpresa,
             CorremEmpresa: body.CorremEmpresa,
-            RolEmpresa: body.RolEmpresa
+            RolEmpresa: body.RolEmpresa,
+            TipoMovimiento: body.TipoMovimiento
         })
         HistorialMovimiento.save((err, historialMovimientoDB) => {
             if (err) {
@@ -133,7 +134,8 @@ app.put('/historialMovimiento/:id', (req, res) => {
         'RutEmpresa',
         'TelEmpresa',
         'CorremEmpresa',
-        'RolEmpresa'
+        'RolEmpresa',
+        'TipoMovimiento'
     ]);
 
     historialMovimiento.findByIdAndUpdate(id, body, { new: true, runValidators: true }, (err, historialMovimientoDB) => {

@@ -6,6 +6,10 @@ let historialMovimientoSchema = new Schema({
         type: String,
         required: [true, 'MotivoMovimiento nesesario']
     },
+    TipoMovimiento: {
+        type: String,
+        required: [true, 'TipoMovimiento nesesario']
+    },
     FechaInicio: {
         type: String,
         required: [true, 'FechaInicio nesesario']
