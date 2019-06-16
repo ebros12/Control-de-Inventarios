@@ -36,7 +36,7 @@ $(document).ready(function() {
                         if (item2.OrdenCompra == $("#orden").val()) {
                             Swal.fire(
                                 'Tenemos un problema',
-                                "La orden de compra " + $("#orden").val() + " ya a sido ingresada",
+                                "La orden de compra " + $("#orden").val() + " ya ha sido ingresada",
                                 'warning'
                             )
                             numeroFallos++
