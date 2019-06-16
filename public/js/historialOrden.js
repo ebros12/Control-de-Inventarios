@@ -68,10 +68,6 @@ function BuscarHistorial() {
                         title: 'Condicion',
                     },
                     {
-                        data: 'Concepto',
-                        title: 'Concepto',
-                    },
-                    {
                         data: 'Importe',
                         title: 'Importe',
                     },
