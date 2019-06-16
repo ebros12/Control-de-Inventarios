@@ -43,7 +43,10 @@ function BuscarHistorial() {
                         ValorTotal: item2.ValorTotal,
                         ValorIVA: item2.ValorIVA,
                         ValorUnidad: item2.ValorUnidad,
-                        cantidad: item2.cantidad
+                        cantidad: item2.cantidad,
+                        CodigoProductoBodega: item2.CodigoProductoBodega
+
+
                     }
                     formateo.push(format)
                 })
@@ -83,6 +86,10 @@ function BuscarHistorial() {
                     },
                     {
                         data: 'cantidad',
+                        title: 'Cantidad Almacenada',
+                    },
+                    {
+                        data: 'CodigoProductoBodega',
                         title: 'Cantidad Almacenada',
                     }
 
