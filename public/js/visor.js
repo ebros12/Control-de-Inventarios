@@ -13,11 +13,11 @@ $(document).ready(function() {
         success: function(json) {
 
             $.each(json.historialMovimiento, function(i, item) {
-                console.log(i, item);
+                console.log(json.historialMovimiento);
                 if (i != "_id" && i != "Productos" && i != "__v" && i != "usuario") {
                     if (i == "NMovimiento") {
                         $(".paso1").append('<div style="border:3px solid red;" class=" col-md-3">' +
-                            '<label style="color:red; padding-left: 30px;" class="ml-3" for="CorrelativoOrden">Nº ' + json.historialMovimiento[0].TipoMovimiento + '</label>' +
+                            '<label style="color:red; padding-left: 30px;" class="ml-3" for="CorrelativoOrden">Nº ' + json.historialMovimiento.TipoMovimiento + '</label>' +
                             '<input style="color:red; padding-left: 45px;" class="ml-3" disabled id="CorrelativoOrden" type="text" value="' + item + '" />' +
                             '</div>')
                     } else {
