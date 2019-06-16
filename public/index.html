@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Google Sing In Demo Control de Inventario</title>
+    <link rel="stylesheet" href="css/loginStyle.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+
+
+    <div class="box inic">
+
+        <h2>Iniciar sesión</h2>
+
+        <form action="">
+
+            <!-- Login -->
+
+            <div class="login-form">
+
+                <label for="username">Username</label>
+                <input type="text" id="email" placeholder="email">
+
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Password">
+
+            </div>
+
+            <!-- Register -->
+
+            <div class="register-form">
+
+                <label for="first-name">First Name</label>
+                <input disabled type="text" id="first-name" placeholder="First Name">
+
+                <label for="last-name">Last Name</label>
+                <input disabled type="text" id="last-name" placeholder="Last Name">
+
+                <label for="email">E-mail Adress</label>
+                <input disabled type="text" id="email" placeholder="E-mail Address">
+
+                <label for="confirm-email">Confirm E-mail Address</label>
+                <input disabled type="text" id="confirm-email" placeholder="Confirm E-mail Address">
+
+                <div class="captcha">
+                    <label for="captcha">What is <strong>10 + 3</strong>?</label>
+                    <input disabled type="text" id="captcha" placeholder="Your answer">
+
+                </div>
+
+            </div>
+
+            <!-- Submit -->
+
+            <a class="float-right btn btn-success" id="Logear" value="Login">Enviar</a>
+
+            <!-- Help -->
+
+            <a style="color:#007bff; cursor:pointer;" class="Registrate">Registrate!</a>
+
+        </form>
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        <a href="#" class="cerrar" onclick="signOut();">Cerrar Sesion</a>
+    </div>
+
+
+    <div style="border-left: 5px solid #ffc107;" class="Register box">
+
+        <h2>Registro de Persona</h2>
+
+        <form action="">
+
+            <!-- Login -->
+
+            <div class="login-form">
+
+                <label for="Nombre">Nombre</label>
+                <input type="text" id="Nombre" placeholder="Nombre">
+
+                <label for="Apellidos">Apellidos</label>
+                <input type="text" id="Apellidos" placeholder="Apellidos">
+
+                <label for="Correo">Correo</label>
+                <input type="text" id="Correo" placeholder="Correo">
+
+                <label for="password">Contraseña</label>
+                <input type="password" id="password1" placeholder="Contraseña">
+
+                <label for="password2">Confirme Contraseña</label>
+                <input type="password" id="password2" placeholder="Confirme Contraseña">
+
+                <select class="form-control mb-3" id="role">
+                    <option value="">Seleccione un Role</option>
+                    <option value="USER_ROLE">USER_ROLE</option>
+                    <option value="VIEW_ROL">VIEW_ROL</option>
+                    <option value="WORK_ROLE">WORK_ROLE</option>
+                </select>
+
+            </div>
+
+            <!-- Submit -->
+
+            <a class="float-right btn btn-warning" id="Registrar" value="Login">Registrar</a>
+
+            <!-- Help -->
+
+            <a style="color:#007bff; cursor:pointer;" class="Registrate">Inicio Sesion</a>
+
+        </form>
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        <a href="#" class="cerrar" onclick="signOut();">Cerrar Sesion</a>
+
+    </div>
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/SweetAlert2.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="421228536184-d9fbauchbp2n00di1l3h1aggt81pm5vl.apps.googleusercontent.com">
+    <script src="js/login.js"></script>
+    <script src="js/js.cookie.min.js"></script>
+
+
+    <script>
+        function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function() {
+                console.log('User signed out.');
+            });
+        }
+    </script>
+
+    <script>
+        function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+            console.log('Name: ' + profile.getName());
+            console.log('Image URL: ' + profile.getImageUrl());
+            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+
+
+            var id_token = googleUser.getAuthResponse().id_token;
+
+            if (Cookies.get('noLog')) {
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '/google');
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.onload = function(json) {
+                    console.log('Signed in as: ' + xhr.responseText);
+                    let respuesta = JSON.parse(json.explicitOriginalTarget.response)
+                    Cookies.set('token', respuesta.token);
+                    Cookies.set('Usuario', respuesta.usuario.nombre);
+                    Cookies.set('role', respuesta.usuario.role);
+                    window.location.href = "PanelBodegas.html";
+                };
+                xhr.send('idtoken=' + id_token);
+            } else {
+                $(".cerrar").click()
+            }
+
+
+        }
+    </script>
+
+</body>
+
+</html>
