@@ -643,7 +643,8 @@ function AgregarBitacora(Motivo) {
         RutEmpresa: $(".RutEmpresa").val(),
         TelEmpresa: $(".TelEmpresa").val(),
         CorremEmpresa: $(".CorremEmpresa").val(),
-        RolEmpresa: $(".RolEmpresa").val()
+        RolEmpresa: $(".RolEmpresa").val(),
+        TipoMovimiento: $(".MovimientoSeleccionado option:selected").text()
     }
     $.ajax({
         data: data,
@@ -674,6 +675,7 @@ function NuevoProducto(nombre, Cantidad, OrdenCompra, idproducto) {
         bodega: $(".Bodega2 option:selected").val(),
         OrdenCompra: OrdenCompra,
         NivelStock: "20"
+
     }
     $.ajax({
         data: data,
