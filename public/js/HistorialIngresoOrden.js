@@ -90,7 +90,7 @@ function BuscarHistorial() {
                     },
                     {
                         data: 'CodigoProductoBodega',
-                        title: 'Cantidad Almacenada',
+                        title: 'Nº correlativo de Registro',
                     }
 
 
