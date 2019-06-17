@@ -12,13 +12,25 @@ function ConsultarProductos() {
         },
         dataType: 'JSON',
         success: function(json) {
-            console.log(json);
+            let ProductosDatatable = []
+            $.each(json.CountBodega, function(i, item) {
+                if (item.cantidad > 0) {
+                    let Temp = {
+                        bodega: item.bodega,
+                        nombre: item.nombre,
+                        cantidad: item.cantidad,
+                        valor: item.valor
+                    }
+                    ProductosDatatable.push(Temp)
+                }
+
+            })
             $('#tablaProducto_wrapper').remove()
             $('.productos').append('<table style="width:100%" class="table table-striped table-hover  table-sm" id="tablaProducto"></table>')
 
             $.fn.dataTable.ext.errMode = 'none';
             let tablaProducto = $('#tablaProductos').DataTable({
-                data: json.CountBodega,
+                data: ProductosDatatable,
                 responsive: {},
                 columns: [{
                         data: 'bodega',
@@ -88,36 +100,38 @@ function productosHighC() {
                 }
             })
             $.each(json.CountBodega, function(i, item) {
-                console.log(item.nombre);
-                if (item.nombre == nombreAnterior || nombreAnterior == "") {
-                    console.log("if");
-                    cantidad.push(parseInt(item.cantidad))
-                    name = item.nombre
-                    stack = item.bodega
-                    nombreAnterior = item.nombre
-                } else {
-                    console.log("else");
-                    let Temp = {
-                        name: name,
-                        data: cantidad,
-                        stack: stack
-                    }
-                    armadoFinal.push(Temp)
+                if (item.cantidad > 0) {
+                    console.log(item.nombre);
+                    if (item.nombre == nombreAnterior || nombreAnterior == "") {
+                        console.log("if");
+                        cantidad.push(parseInt(item.cantidad))
+                        name = item.nombre
+                        stack = item.bodega
+                        nombreAnterior = item.nombre
+                    } else {
+                        console.log("else");
+                        let Temp = {
+                            name: name,
+                            data: cantidad,
+                            stack: stack
+                        }
+                        armadoFinal.push(Temp)
 
-                    name = item.nombre
-                    stack = item.bodega
-                    cantidad = []
-                    cantidad.push(parseInt(item.cantidad))
-                    nombreAnterior = item.nombre
-                }
-                if (i == json.CountBodega.length - 1) {
-                    console.log("length");
-                    let Temp = {
-                        name: item.nombre,
-                        data: cantidad,
-                        stack: item.bodega
+                        name = item.nombre
+                        stack = item.bodega
+                        cantidad = []
+                        cantidad.push(parseInt(item.cantidad))
+                        nombreAnterior = item.nombre
                     }
-                    armadoFinal.push(Temp)
+                    if (i == json.CountBodega.length - 1) {
+                        console.log("length");
+                        let Temp = {
+                            name: item.nombre,
+                            data: cantidad,
+                            stack: item.bodega
+                        }
+                        armadoFinal.push(Temp)
+                    }
                 }
             })
             console.log("armadoFinal", armadoFinal);
