@@ -40,7 +40,7 @@ function BuscarHistorial() {
                     Condicion: item.Condicion,
                     Concepto: item.Concepto,
                     Importe: item.Importe,
-                    Precio: item.Precio,
+                    Precio: "$ " + item.TotalIVA,
                     HoraInicio: item.HoraInicio,
                     HoraFin: item.HoraFin,
                     HoraCreacion: item.HoraCreacion,
