@@ -10,11 +10,11 @@ let Producto = require('../models/producto');
 app.get('/productos', (req, res) => {
     // populate usuario categoria
     // paginado
-    Producto.find({ disponible: true }, 'nombre precioUni descripcion Umedida')
+    Producto.find({ disponible: true })
         .sort('nombre')
         .populate('usuario', 'nombre email')
         .populate('categoria', 'descripcion')
-        .populate('distribucions', 'nombre')
+        .populate('distribucion', 'nombre')
 
 
     .exec((err, productos) => {
