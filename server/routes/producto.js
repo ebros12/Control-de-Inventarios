@@ -14,7 +14,7 @@ app.get('/productos', (req, res) => {
         .sort('nombre')
         .populate('usuario', 'nombre email')
         .populate('categoria', 'descripcion')
-        .populate('distribucion', 'nombre')
+        .populate('distribucions', 'nombre')
 
 
     .exec((err, productos) => {

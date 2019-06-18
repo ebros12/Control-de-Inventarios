@@ -92,7 +92,7 @@ function BuscarProductos() {
                         title: 'Segmentacion de producto',
                     },
                     {
-                        data: 'categoria.descripcion',
+                        data: 'distribucion.descripcion',
                         title: 'Distribucion'
                     },
                     {
