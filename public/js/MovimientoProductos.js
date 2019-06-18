@@ -351,7 +351,7 @@ function ProductosBodega() {
                 $(".TotalNIVA").val(total)
                 $(".TotalIVA").val(parseInt($(".TotalNIVA").val()) + (parseInt($(".TotalNIVA").val()) * parseInt($(".IVA").val())) / 100)
             })
-            $(".form").after('<br><button class="botonAccion' + $(".MovimientoSeleccionado  option:selected").val() + ' h1titulo  productosBodegas btn btn-info">Realizar ' + $(".MovimientoSeleccionado  option:selected").text() + '</button>')
+            $(".form").parent().append('<br><button class="botonAccion' + $(".MovimientoSeleccionado  option:selected").val() + ' h1titulo  productosBodegas btn btn-info">Realizar ' + $(".MovimientoSeleccionado  option:selected").text() + '</button>')
 
 
             $(".botonAccion1").click(function() {
