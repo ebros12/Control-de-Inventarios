@@ -11,7 +11,6 @@ const { verificaToken, verificaAdmin_Role } = require('../middlewares/Autenticac
 
 app.get('/usuario', verificaToken, (req, res) => {
     Usuario.find({ estado: true }, 'nombre email role estado google img')
-        .skip(desde)
         .exec((err, usuarios) => {
             if (err) {
                 return res.status(400).json({
@@ -29,9 +28,6 @@ app.get('/usuario', verificaToken, (req, res) => {
 
         })
 })
-
-
-
 
 
 // =҉====҉==҉=҉=҉==҉=҉=҉====҉==҉=҉=҉==҉=҉
