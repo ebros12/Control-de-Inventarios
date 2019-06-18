@@ -72,7 +72,7 @@ function BuscarHistorial() {
                         title: 'Observaciones',
                     },
                     {
-                        data: 'TotalIVA',
+                        data: 'Precio',
                         title: 'Precio'
                     },
                     {
