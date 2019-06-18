@@ -14,7 +14,7 @@ let usuarioSchema = new Schema({
     },
     apellido: {
         type: String,
-        required: [true, 'El apellido es necesario']
+        required: [false, 'El apellido es necesario']
     },
     email: {
         type: String,
