@@ -10,13 +10,8 @@ const { verificaToken, verificaAdmin_Role } = require('../middlewares/Autenticac
 
 
 app.get('/usuario', verificaToken, (req, res) => {
-    let desde = req.query.desde || 0;
-    desde = Number(desde);
-    let limite = req.query.limite || 5;
-    limite = Number(limite);
     Usuario.find({ estado: true }, 'nombre email role estado google img')
         .skip(desde)
-        .limit(limite)
         .exec((err, usuarios) => {
             if (err) {
                 return res.status(400).json({
