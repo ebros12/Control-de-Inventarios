@@ -10,7 +10,7 @@ var distribucionSchema = new Schema({
     bodega: {
         type: Schema.Types.ObjectId,
         ref: 'Bodega',
-        required: [true, 'La bodega es nesesario']
+        required: [false, 'La bodega es nesesario']
     }
 });
 
