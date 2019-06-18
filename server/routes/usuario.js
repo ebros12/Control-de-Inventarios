@@ -31,6 +31,9 @@ app.get('/usuario', verificaToken, (req, res) => {
 })
 
 
+
+
+
 // =҉====҉==҉=҉=҉==҉=҉=҉====҉==҉=҉=҉==҉=҉
 // Obtener un usuario por ID
 // =҉====҉==҉=҉=҉==҉=҉=҉====҉==҉=҉=҉==҉=҉
