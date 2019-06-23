@@ -138,7 +138,7 @@ function BuscarProductos() {
                             '<label for="Umedida">Unidad de Medida:</label>' +
                             '<input type="text" id="Umedida" class="form-control ">' +
 
-                            '<label for="distribucion">Distribucion:</label>' +
+                            '<label for="distribucion">Segmentación:</label>' +
                             '<select id="distribucion" class="form-control "><option value="">-- seleccione Distribucion --</option></select>' +
 
 
